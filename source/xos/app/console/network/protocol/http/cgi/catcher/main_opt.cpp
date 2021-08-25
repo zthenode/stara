@@ -16,9 +16,13 @@
 ///   File: main_opt.cpp
 ///
 /// Author: $author$
-///   Date: 4/11/2020
+///   Date: 4/11/2020, 8/20/2021
 ///////////////////////////////////////////////////////////////////////
 #include "xos/app/console/network/protocol/http/cgi/catcher/main_opt.hpp"
+
+#if !defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_CATCHER_MAIN_OPT_INSTANCE)
+///#define XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_CATCHER_MAIN_OPT_INSTANCE
+#endif /// !defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_CATCHER_MAIN_OPT_INSTANCE)
 
 namespace xos {
 namespace app {
@@ -30,6 +34,9 @@ namespace cgi {
 namespace catcher {
 
 /// class main_optt
+#if defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_CATCHER_MAIN_OPT_INSTANCE)
+static main_opt the_main_opt;
+#endif /// defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_CATCHER_MAIN_OPT_INSTANCE)
 
 } /// namespace catcher
 } /// namespace cgi

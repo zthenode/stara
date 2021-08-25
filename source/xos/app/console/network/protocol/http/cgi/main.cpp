@@ -20,6 +20,10 @@
 ///////////////////////////////////////////////////////////////////////
 #include "xos/app/console/network/protocol/http/cgi/main.hpp"
 
+#if !defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_MAIN_INSTANCE)
+///#define XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_MAIN_INSTANCE
+#endif /// !defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_MAIN_NSTANCE)
+
 namespace xos {
 namespace app {
 namespace console {
@@ -28,8 +32,10 @@ namespace protocol {
 namespace http {
 namespace cgi {
 
-/// class maint
+/// class main
+#if defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_MAIN_INSTANCE)
 static main the_main;
+#endif /// defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_MAIN_INSTANCE)
 
 } /// namespace cgi
 } /// namespace http

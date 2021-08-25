@@ -16,9 +16,13 @@
 ///   File: main.cpp
 ///
 /// Author: $author$
-///   Date: 4/11/2020
+///   Date: 4/11/2020, 8/20/2021
 ///////////////////////////////////////////////////////////////////////
 #include "xos/app/console/network/protocol/http/cgi/catcher/main.hpp"
+
+#if !defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_CATCHER_MAIN_INSTANCE)
+///#define XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_CATCHER_MAIN_INSTANCE
+#endif /// !defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_CATCHER_MAIN_NSTANCE)
 
 namespace xos {
 namespace app {
@@ -29,8 +33,10 @@ namespace http {
 namespace cgi {
 namespace catcher {
 
-/// class maint
+/// class main
+#if defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_CATCHER_MAIN_INSTANCE)
 static main the_main;
+#endif /// defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_CATCHER_MAIN_INSTANCE)
 
 } /// namespace catcher
 } /// namespace cgi

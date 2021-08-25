@@ -16,7 +16,7 @@
 ///   File: main.hpp
 ///
 /// Author: $author$
-///   Date: 4/2/2020
+///   Date: 4/2/2020, 8/24/2021
 ///////////////////////////////////////////////////////////////////////
 #ifndef XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_MAIN_HPP
 #define XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_MAIN_HPP
@@ -85,10 +85,10 @@ protected:
     typedef xos::protocol::xttp::message::part::reader_t reader_t;
     typedef xos::protocol::xttp::message::part::writer_t writer_t;
     typedef xos::protocol::xttp::content::readert<reader_t> content_reader_t;
+    typedef xos::io::string::readert<xos::protocol::xttp::message::part, reader_t> string_reader_t;
     typedef xos::io::crt::file::readert<reader_t> file_reader_t;
     typedef xos::io::crt::file::writert<writer_t> file_writer_t;
-    typedef xos::io::string::readert<reader_t> string_reader_t;
-    typedef string_reader_t::string_t query_string_t;
+    typedef xos::protocol::xttp::message::part query_string_t;
     typedef xos::protocol::http::form::content form_content_t;
     typedef xos::protocol::http::form::field form_field_t;
     typedef xos::protocol::http::form::fields form_fields_t;
