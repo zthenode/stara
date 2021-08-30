@@ -23,6 +23,7 @@
 
 ########################################################################
 # libstara
+XOS_LIB_STARA_VERSION_BUILD_DATE = $$system(~/bin/utility/tdate)
 
 # libstara TARGET
 #
@@ -40,6 +41,7 @@ $${stara_INCLUDEPATH} \
 libstara_DEFINES += \
 $${stara_DEFINES} \
 DEFAULT_LOGGING_LEVELS_ERROR \
+XOS_LIB_STARA_VERSION_BUILD_DATE=$${XOS_LIB_STARA_VERSION_BUILD_DATE} \
 
 ########################################################################
 # libstara OBJECTIVE_HEADERS

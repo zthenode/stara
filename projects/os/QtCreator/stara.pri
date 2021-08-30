@@ -16,10 +16,12 @@
 #   File: stara.pri
 #
 # Author: $author$
-#   Date: 8/4/2021
+#   Date: 8/29/2021
 #
 # Os specific QtCreator .pri file for stara
 ########################################################################
+# depends rostra;nadir;fila;crono;rete
+
 UNAME = $$system(uname)
 
 contains(UNAME,Darwin) {
@@ -59,29 +61,6 @@ contains(STARA_OS,windows) {
 } # contains(STARA_OS,macosx)
 
 ########################################################################
-# nadir
-NADIR_THIRDPARTY_PKG_MAKE_BLD = $${NADIR_THIRDPARTY_PKG}/build/$${STARA_BUILD}/$${BUILD_CONFIG}
-NADIR_THIRDPARTY_PRJ_MAKE_BLD = $${OTHER_BLD}/$${NADIR_THIRDPARTY_PRJ}/build/$${STARA_BUILD}/$${BUILD_CONFIG}
-NADIR_THIRDPARTY_PKG_BLD = $${NADIR_THIRDPARTY_PKG}/build/$${STARA_BUILD}/QtCreator/$${BUILD_CONFIG}
-NADIR_THIRDPARTY_PRJ_BLD = $${OTHER_BLD}/$${NADIR_THIRDPARTY_PRJ}/build/$${STARA_BUILD}/QtCreator/$${BUILD_CONFIG}
-NADIR_PKG_BLD = $${OTHER_BLD}/$${NADIR_PKG}/build/$${STARA_BUILD}/QtCreator/$${BUILD_CONFIG}
-NADIR_PRJ_BLD = $${OTHER_BLD}/$${NADIR_PRJ}/build/$${STARA_BUILD}/QtCreator/$${BUILD_CONFIG}
-#NADIR_LIB = $${NADIR_THIRDPARTY_PKG_MAKE_BLD}/lib
-#NADIR_LIB = $${NADIR_THIRDPARTY_PRJ_MAKE_BLD}/lib
-#NADIR_LIB = $${NADIR_THIRDPARTY_PKG_BLD}/lib
-#NADIR_LIB = $${NADIR_THIRDPARTY_PRJ_BLD}/lib
-NADIR_LIB = $${NADIR_PKG_BLD}/lib
-#NADIR_LIB = $${NADIR_PRJ_BLD}/lib
-#NADIR_LIB = $${STARA_LIB}
-NADIR_LIB_NAME = $${NADIR_NAME}
-
-# nadir LIBS
-#
-nadir_LIBS += \
--L$${NADIR_LIB}/lib$${NADIR_LIB_NAME} \
--l$${NADIR_LIB_NAME} \
-
-########################################################################
 # rostra
 ROSTRA_THIRDPARTY_PKG_MAKE_BLD = $${ROSTRA_THIRDPARTY_PKG}/build/$${STARA_BUILD}/$${BUILD_CONFIG}
 ROSTRA_THIRDPARTY_PRJ_MAKE_BLD = $${OTHER_BLD}/$${ROSTRA_THIRDPARTY_PRJ}/build/$${STARA_BUILD}/$${BUILD_CONFIG}
@@ -103,6 +82,29 @@ ROSTRA_LIB_NAME = $${ROSTRA_NAME}
 rostra_LIBS += \
 -L$${ROSTRA_LIB}/lib$${ROSTRA_LIB_NAME} \
 -l$${ROSTRA_LIB_NAME} \
+
+########################################################################
+# nadir
+NADIR_THIRDPARTY_PKG_MAKE_BLD = $${NADIR_THIRDPARTY_PKG}/build/$${STARA_BUILD}/$${BUILD_CONFIG}
+NADIR_THIRDPARTY_PRJ_MAKE_BLD = $${OTHER_BLD}/$${NADIR_THIRDPARTY_PRJ}/build/$${STARA_BUILD}/$${BUILD_CONFIG}
+NADIR_THIRDPARTY_PKG_BLD = $${NADIR_THIRDPARTY_PKG}/build/$${STARA_BUILD}/QtCreator/$${BUILD_CONFIG}
+NADIR_THIRDPARTY_PRJ_BLD = $${OTHER_BLD}/$${NADIR_THIRDPARTY_PRJ}/build/$${STARA_BUILD}/QtCreator/$${BUILD_CONFIG}
+NADIR_PKG_BLD = $${OTHER_BLD}/$${NADIR_PKG}/build/$${STARA_BUILD}/QtCreator/$${BUILD_CONFIG}
+NADIR_PRJ_BLD = $${OTHER_BLD}/$${NADIR_PRJ}/build/$${STARA_BUILD}/QtCreator/$${BUILD_CONFIG}
+#NADIR_LIB = $${NADIR_THIRDPARTY_PKG_MAKE_BLD}/lib
+#NADIR_LIB = $${NADIR_THIRDPARTY_PRJ_MAKE_BLD}/lib
+#NADIR_LIB = $${NADIR_THIRDPARTY_PKG_BLD}/lib
+#NADIR_LIB = $${NADIR_THIRDPARTY_PRJ_BLD}/lib
+NADIR_LIB = $${NADIR_PKG_BLD}/lib
+#NADIR_LIB = $${NADIR_PRJ_BLD}/lib
+#NADIR_LIB = $${STARA_LIB}
+NADIR_LIB_NAME = $${NADIR_NAME}
+
+# nadir LIBS
+#
+nadir_LIBS += \
+-L$${NADIR_LIB}/lib$${NADIR_LIB_NAME} \
+-l$${NADIR_LIB_NAME} \
 
 ########################################################################
 # fila
@@ -151,29 +153,6 @@ crono_LIBS += \
 -l$${CRONO_LIB_NAME} \
 
 ########################################################################
-# cifra
-CIFRA_THIRDPARTY_PKG_MAKE_BLD = $${CIFRA_THIRDPARTY_PKG}/build/$${STARA_BUILD}/$${BUILD_CONFIG}
-CIFRA_THIRDPARTY_PRJ_MAKE_BLD = $${OTHER_BLD}/$${CIFRA_THIRDPARTY_PRJ}/build/$${STARA_BUILD}/$${BUILD_CONFIG}
-CIFRA_THIRDPARTY_PKG_BLD = $${CIFRA_THIRDPARTY_PKG}/build/$${STARA_BUILD}/QtCreator/$${BUILD_CONFIG}
-CIFRA_THIRDPARTY_PRJ_BLD = $${OTHER_BLD}/$${CIFRA_THIRDPARTY_PRJ}/build/$${STARA_BUILD}/QtCreator/$${BUILD_CONFIG}
-CIFRA_PKG_BLD = $${OTHER_BLD}/$${CIFRA_PKG}/build/$${STARA_BUILD}/QtCreator/$${BUILD_CONFIG}
-CIFRA_PRJ_BLD = $${OTHER_BLD}/$${CIFRA_PRJ}/build/$${STARA_BUILD}/QtCreator/$${BUILD_CONFIG}
-#CIFRA_LIB = $${CIFRA_THIRDPARTY_PKG_MAKE_BLD}/lib
-#CIFRA_LIB = $${CIFRA_THIRDPARTY_PRJ_MAKE_BLD}/lib
-#CIFRA_LIB = $${CIFRA_THIRDPARTY_PKG_BLD}/lib
-#CIFRA_LIB = $${CIFRA_THIRDPARTY_PRJ_BLD}/lib
-CIFRA_LIB = $${CIFRA_PKG_BLD}/lib
-#CIFRA_LIB = $${CIFRA_PRJ_BLD}/lib
-#CIFRA_LIB = $${STARA_LIB}
-CIFRA_LIB_NAME = $${CIFRA_NAME}
-
-# cifra LIBS
-#
-cifra_LIBS += \
--L$${CIFRA_LIB}/lib$${CIFRA_LIB_NAME} \
--l$${CIFRA_LIB_NAME} \
-
-########################################################################
 # rete
 RETE_THIRDPARTY_PKG_MAKE_BLD = $${RETE_THIRDPARTY_PKG}/build/$${STARA_BUILD}/$${BUILD_CONFIG}
 RETE_THIRDPARTY_PRJ_MAKE_BLD = $${OTHER_BLD}/$${RETE_THIRDPARTY_PRJ}/build/$${STARA_BUILD}/$${BUILD_CONFIG}
@@ -211,11 +190,10 @@ stara_DEFINES += \
 #
 stara_LIBS += \
 $${rete_LIBS} \
-$${cifra_LIBS} \
 $${crono_LIBS} \
 $${fila_LIBS} \
-$${rostra_LIBS} \
 $${nadir_LIBS} \
+$${rostra_LIBS} \
 $${build_stara_LIBS} \
 
 contains(STARA_OS,macosx|linux) {
