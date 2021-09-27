@@ -16,27 +16,22 @@
 ///   File: main_opt.hpp
 ///
 /// Author: $author$
-///   Date: 9/19/2020, 5/21/2021
+///   Date: 9/19/2020, 9/25/2021
 ///////////////////////////////////////////////////////////////////////
 #ifndef XOS_APP_CONSOLE_XTTP_BASE_MAIN_OPT_HPP
 #define XOS_APP_CONSOLE_XTTP_BASE_MAIN_OPT_HPP
 
 #include "xos/app/console/protocol/xttp/base/main.hpp"
 #include "xos/app/console/network/base/main.hpp"
-
-#define XOS_APP_CONSOLE_XTTP_BASE_MAIN_OPTIONS_CHARS_EXTEND \
-    XOS_PROTOCOL_XTTP_BASE_MAIN_OPTIONS_CHARS_EXTEND \
-
-#define XOS_APP_CONSOLE_XTTP_BASE_MAIN_OPTIONS_OPTIONS_EXTEND \
-    XOS_PROTOCOL_XTTP_BASE_MAIN_OPTIONS_OPTIONS_EXTEND \
+#include "xos/lib/stara/version.hpp"
 
 #define XOS_APP_CONSOLE_XTTP_BASE_MAIN_OPTIONS_CHARS \
-    XOS_APP_CONSOLE_XTTP_BASE_MAIN_OPTIONS_CHARS_EXTEND \
-    XOS_NETWORK_BASE_MAIN_OPTIONS_CHARS
+    XOS_PROTOCOL_XTTP_BASE_MAIN_OPTIONS_CHARS_EXTEND \
+    XOS_NETWORK_BASE_ENDPOINT_MAIN_OPTIONS_CHARS \
 
 #define XOS_APP_CONSOLE_XTTP_BASE_MAIN_OPTIONS_OPTIONS \
-    XOS_APP_CONSOLE_XTTP_BASE_MAIN_OPTIONS_OPTIONS_EXTEND \
-    XOS_NETWORK_BASE_MAIN_OPTIONS_OPTIONS
+    XOS_PROTOCOL_XTTP_BASE_MAIN_OPTIONS_OPTIONS_EXTEND \
+    XOS_NETWORK_BASE_ENDPOINT_MAIN_OPTIONS_OPTIONS \
 
 #define XOS_APP_CONSOLE_XTTP_BASE_MAIN_ARGS 0
 #define XOS_APP_CONSOLE_XTTP_BASE_MAIN_ARGV 0,
@@ -49,8 +44,8 @@ namespace base {
 
 /// class main_optt
 template 
-<class TExtends = protocol::xttp::base::maint
- <protocol::xttp::base::main_optt<network::base::main> >, class TImplements = typename TExtends::implements>
+<class TExtends = protocol::xttp::base::maint<protocol::xttp::base::main_optt
+ <network::base::maint<network::base::main_optt<version::maint<lib::stara::version> > > > >, class TImplements = typename TExtends::implements>
 class exported main_optt: virtual public TImplements, public TExtends {
 public:
     typedef TImplements implements;

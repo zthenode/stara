@@ -16,27 +16,33 @@
 ///   File: main.cpp
 ///
 /// Author: $author$
-///   Date: 9/27/2021
+///   Date: 9/17/2021
 ///////////////////////////////////////////////////////////////////////
-#include "xos/app/console/sony/client/main.hpp"
+#include "xos/app/console/network/protocol/http/cgi/environment/main.hpp"
 
-#if !defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_INSTANCE)
-///#define XOS_APP_CONSOLE_SONY_CLIENT_MAIN_INSTANCE
-#endif /// !defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_NSTANCE)
+#if !defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_ENVIRONMENT_MAIN_INSTANCE)
+///#define XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_ENVIRONMENT_MAIN_INSTANCE
+#endif /// !defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_ENVIRONMENT_MAIN_NSTANCE)
 
 namespace xos {
 namespace app {
 namespace console {
-namespace sony {
-namespace client {
+namespace network {
+namespace protocol {
+namespace http {
+namespace cgi {
+namespace environment {
 
 /// class main
-#if defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_INSTANCE)
+#if defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_ENVIRONMENT_MAIN_INSTANCE)
 static main the_main;
-#endif /// defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_INSTANCE)
+#endif /// defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_ENVIRONMENT_MAIN_INSTANCE)
 
-} /// namespace client
-} /// namespace sony
+} /// namespace environment
+} /// namespace cgi
+} /// namespace http
+} /// namespace protocol
+} /// namespace network
 } /// namespace console
 } /// namespace app
 } /// namespace xos

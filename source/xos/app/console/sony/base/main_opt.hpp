@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2020 $organization$
+/// Copyright (c) 1988-2021 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -16,89 +16,72 @@
 ///   File: main_opt.hpp
 ///
 /// Author: $author$
-///   Date: 10/29/2020, 9/25/2021
+///   Date: 9/27/2021
 ///////////////////////////////////////////////////////////////////////
-#ifndef XOS_APP_CONSOLE_HTTP_BASE_MAIN_OPT_HPP
-#define XOS_APP_CONSOLE_HTTP_BASE_MAIN_OPT_HPP
+#ifndef XOS_APP_CONSOLE_SONY_BASE_MAIN_OPT_HPP
+#define XOS_APP_CONSOLE_SONY_BASE_MAIN_OPT_HPP
 
-#include "xos/app/console/xttp/base/main.hpp"
-#include "xos/app/console/protocol/http/base/main.hpp"
-
-#define XOS_APP_CONSOLE_HTTP_BASE_MAIN_OPTIONS_CHARS \
-   XOS_APP_CONSOLE_XTTP_BASE_MAIN_OPTIONS_CHARS \
-
-#define XOS_APP_CONSOLE_HTTP_BASE_MAIN_OPTIONS_OPTIONS \
-   XOS_APP_CONSOLE_XTTP_BASE_MAIN_OPTIONS_OPTIONS \
-   
-#define XOS_APP_CONSOLE_HTTP_BASE_MAIN_ARUMENTS_CHARS 0
-#define XOS_APP_CONSOLE_HTTP_BASE_MAIN_ARUMENTS_ARGS 0
+#include "xos/app/console/http/base/main.hpp"
 
 namespace xos {
 namespace app {
 namespace console {
-namespace http {
+namespace sony {
 namespace base {
 
 /// class main_optt
 template 
-<class TExtends = xttp::base::maint<xttp::base::main_optt
- <protocol::http::base::maint<protocol::http::base::main_optt
-  <protocol::xttp::base::maint<protocol::xttp::base::main_optt
-   <network::base::maint<network::base::main_optt<version::maint<lib::stara::version> > > > > > > > >, 
+<class TExtends = xos::app::console::http::base::main, 
  class TImplements = typename TExtends::implements>
+
 class exported main_optt: virtual public TImplements, public TExtends {
 public:
     typedef TImplements implements;
     typedef TExtends extends;
-    typedef main_optt derives; 
-    
-    typedef typename extends::in_reader_t in_reader_t;
-    typedef typename extends::out_writer_t out_writer_t;
-    typedef typename extends::err_writer_t err_writer_t;
+    typedef main_optt derives;
+
+    typedef typename extends::char_t char_t;
+    typedef typename extends::end_char_t end_char_t;
+    enum { end_char = extends::end_char };
+    typedef typename extends::string_t string_t;
     typedef typename extends::reader_t reader_t;
     typedef typename extends::writer_t writer_t;
     typedef typename extends::file_t file_t;
-    typedef typename extends::string_t string_t;
-    typedef typename extends::char_t char_t;
 
-    /// constructors / destructor
+    /// constructor / destructor
     main_optt() {
     }
     virtual ~main_optt() {
     }
 private:
     main_optt(const main_optt& copy) {
+        throw exception(exception_unexpected);
     }
 
 protected:
+    typedef typename extends::in_reader_t in_reader_t;
+    typedef typename extends::out_writer_t out_writer_t;
+    typedef typename extends::err_writer_t err_writer_t;
+
+    typedef typename extends::json_number_t json_number_t;
+    typedef typename extends::json_node_t json_node_t;
+    typedef typename extends::json_array_t json_array_t;
+    typedef typename extends::json_object_t json_object_t;
+
     typedef typename extends::content_type_t content_type_t;
     typedef typename extends::content_type_type_which_t content_type_type_which_t;
     typedef typename extends::content_type_header_t content_type_header_t;
     typedef typename extends::content_length_header_t content_length_header_t;
     typedef typename extends::content_t content_t;
 
-    /// ...option...
-    virtual const char_t* options(const struct option*& longopts) {
-        static const char_t* chars = XOS_APP_CONSOLE_HTTP_BASE_MAIN_OPTIONS_CHARS;
-        static struct option optstruct[]= {
-            XOS_APP_CONSOLE_HTTP_BASE_MAIN_OPTIONS_OPTIONS
-            {0, 0, 0, 0}};
-        longopts = optstruct;
-        return chars;
-    }
-
-    /// ...argument...
-    virtual const char_t* arguments(const char_t**& args) {
-        args = XOS_APP_CONSOLE_HTTP_BASE_MAIN_ARUMENTS_ARGS;
-        return XOS_APP_CONSOLE_HTTP_BASE_MAIN_ARUMENTS_CHARS;
-    }
+protected:
 }; /// class main_optt
 typedef main_optt<> main_opt;
 
 } /// namespace base
-} /// namespace http
+} /// namespace sony
 } /// namespace console
 } /// namespace app
 } /// namespace xos
 
-#endif /// XOS_APP_CONSOLE_HTTP_BASE_MAIN_OPT_HPP
+#endif /// ndef XOS_APP_CONSOLE_SONY_BASE_MAIN_OPT_HPP

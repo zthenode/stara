@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2020 $organization$
+/// Copyright (c) 1988-2021 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -16,14 +16,13 @@
 ///   File: main_opt.cpp
 ///
 /// Author: $author$
-///   Date: 8/13/2020
+///   Date: 9/27/2021
 ///////////////////////////////////////////////////////////////////////
 #include "xos/app/console/sony/client/main_opt.hpp"
 
-//#define XOS_APP_CONSOLE_SONY_CLIENT_MAIN_OPT_INSTANCE
-#if defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_OPT_INSTANCE)
-#include "xos/console/main_main.cpp"
-#endif /// defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_OPT_INSTANCE)
+#if !defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_OPT_INSTANCE)
+///#define XOS_APP_CONSOLE_SONY_CLIENT_MAIN_OPT_INSTANCE
+#endif /// !defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_OPT_INSTANCE)
 
 namespace xos {
 namespace app {
@@ -31,11 +30,10 @@ namespace console {
 namespace sony {
 namespace client {
 
-///  Class: main_optt
+/// class main_optt
 #if defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_OPT_INSTANCE)
 static main_opt the_main_opt;
 #endif /// defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_OPT_INSTANCE)
-
 
 } /// namespace client
 } /// namespace sony

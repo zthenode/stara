@@ -16,7 +16,7 @@
 ///   File: main.hpp
 ///
 /// Author: $author$
-///   Date: 9/14/2020, 5/20/2021
+///   Date: 9/14/2020, 9/24/2021
 ///////////////////////////////////////////////////////////////////////
 #ifndef XOS_APP_CONSOLE_XTTP_SERVER_MAIN_HPP
 #define XOS_APP_CONSOLE_XTTP_SERVER_MAIN_HPP
@@ -142,14 +142,24 @@ protected:
     virtual int process_response_to(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
         int err = 0;
         switch (request.line().method().which()) {
+
         case xos::protocol::http::request::method::restart:
+            LOGGER_IS_LOGGED_INFO("all_process_response_to_restart(writer, response, request, reader, argc, argv, env)...");
             err = all_process_response_to_restart(writer, response, request, reader, argc, argv, env);
+            LOGGER_IS_LOGGED_INFO("..." << err << " = all_process_response_to_restart(writer, response, request, reader, argc, argv, env)");
             break;
+        
         case xos::protocol::http::request::method::stop:
+            LOGGER_IS_LOGGED_INFO("all_process_response_to_stop(writer, response, request, reader, argc, argv, env)...");
             err = all_process_response_to_stop(writer, response, request, reader, argc, argv, env);
+            LOGGER_IS_LOGGED_INFO("..." << err << " = all_process_response_to_stop(writer, response, request, reader, argc, argv, env)");
             break;
+        
+        case xos::protocol::http::request::method::unknown:
         default:
+            LOGGER_IS_LOGGED_INFO("all_process_response_to_unknown(writer, response, request, reader, argc, argv, env)...");
             err = all_process_response_to_unknown(writer, response, request, reader, argc, argv, env);
+            LOGGER_IS_LOGGED_INFO("..." << err << " = all_process_response_to_unknown(writer, response, request, reader, argc, argv, env)");
             break;
         } /// switch
         return err;
@@ -173,8 +183,13 @@ protected:
         }
         return err;
     }
+
+    /// ...process_response_to_restart...
     virtual int process_response_to_restart(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
         int err = 0;
+        LOGGER_IS_LOGGED_INFO("process_response_to_restart(writer, response, request, reader, argc, argv, env)...");
+        this->set_accept_restart();
+        LOGGER_IS_LOGGED_INFO("...process_response_to_restart(writer, response, request, reader, argc, argv, env)");
         return err;
     }
     virtual int before_process_response_to_restart(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
@@ -183,7 +198,6 @@ protected:
     }
     virtual int after_process_response_to_restart(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
         int err = 0;
-        this->set_accept_restart();
         return err;
     }
     virtual int all_process_response_to_restart(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
@@ -197,8 +211,13 @@ protected:
         }
         return err;
     }
+
+    /// ...process_response_to_stop...
     virtual int process_response_to_stop(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
         int err = 0;
+        LOGGER_IS_LOGGED_INFO("process_response_to_stop(writer, response, request, reader, argc, argv, env)...");
+        this->set_accept_done();
+        LOGGER_IS_LOGGED_INFO("...process_response_to_stop(writer, response, request, reader, argc, argv, env)");
         return err;
     }
     virtual int before_process_response_to_stop(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
@@ -207,7 +226,6 @@ protected:
     }
     virtual int after_process_response_to_stop(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
         int err = 0;
-        this->set_accept_done();
         return err;
     }
     virtual int all_process_response_to_stop(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
@@ -221,8 +239,13 @@ protected:
         }
         return err;
     }
+
+    /// ...process_response_to_unknown...
     virtual int process_response_to_unknown(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
         int err = 0;
+        LOGGER_IS_LOGGED_INFO("process_response_to_unknown(writer, response, request, reader, argc, argv, env)...");
+        err = this->all_process_response_to_any(writer, response, request, reader, argc, argv, env);
+        LOGGER_IS_LOGGED_INFO("...process_response_to_unknown(writer, response, request, reader, argc, argv, env)");
         return err;
     }
     virtual int before_process_response_to_unknown(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
@@ -239,6 +262,33 @@ protected:
             int err2 = 0;
             err = process_response_to_unknown(writer, response, request, reader, argc, argv, env);
             if ((err2 = after_process_response_to_unknown(writer, response, request, reader, argc, argv, env))) {
+                if (!(err)) err = err2;
+            }
+        }
+        return err;
+    }
+
+    /// ...process_response_to_any...
+    virtual int process_response_to_any(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
+        int err = 0;
+        LOGGER_IS_LOGGED_INFO("process_response_to_any(writer, response, request, reader, argc, argv, env)...");
+        LOGGER_IS_LOGGED_INFO("...process_response_to_any(writer, response, request, reader, argc, argv, env)");
+        return err;
+    }
+    virtual int before_process_response_to_any(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int after_process_response_to_any(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
+        int err = 0;
+        return err;
+    }
+    virtual int all_process_response_to_any(writer_t& writer, response_t& response, request_t& request, reader_t& reader, int argc, char_t** argv, char** env) {
+        int err = 0;
+        if (!(err = before_process_response_to_any(writer, response, request, reader, argc, argv, env))) {
+            int err2 = 0;
+            err = process_response_to_any(writer, response, request, reader, argc, argv, env);
+            if ((err2 = after_process_response_to_any(writer, response, request, reader, argc, argv, env))) {
                 if (!(err)) err = err2;
             }
         }

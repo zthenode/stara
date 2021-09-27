@@ -13,30 +13,36 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: main.cpp
+///   File: main_opt.cpp
 ///
 /// Author: $author$
-///   Date: 9/27/2021
+///   Date: 9/17/2021
 ///////////////////////////////////////////////////////////////////////
-#include "xos/app/console/sony/client/main.hpp"
+#include "xos/app/console/network/protocol/http/cgi/environment/main_opt.hpp"
 
-#if !defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_INSTANCE)
-///#define XOS_APP_CONSOLE_SONY_CLIENT_MAIN_INSTANCE
-#endif /// !defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_NSTANCE)
+#if !defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_ENVIRONMENT_MAIN_OPT_INSTANCE)
+///#define XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_ENVIRONMENT_MAIN_OPT_INSTANCE
+#endif /// !defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_ENVIRONMENT_MAIN_OPT_INSTANCE)
 
 namespace xos {
 namespace app {
 namespace console {
-namespace sony {
-namespace client {
+namespace network {
+namespace protocol {
+namespace http {
+namespace cgi {
+namespace environment {
 
-/// class main
-#if defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_INSTANCE)
-static main the_main;
-#endif /// defined(XOS_APP_CONSOLE_SONY_CLIENT_MAIN_INSTANCE)
+/// class main_optt
+#if defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_ENVIRONMENT_MAIN_OPT_INSTANCE)
+static main_opt the_main_opt;
+#endif /// defined(XOS_APP_CONSOLE_NETWORK_PROTOCOL_HTTP_CGI_ENVIRONMENT_MAIN_OPT_INSTANCE)
 
-} /// namespace client
-} /// namespace sony
+} /// namespace environment
+} /// namespace cgi
+} /// namespace http
+} /// namespace protocol
+} /// namespace network
 } /// namespace console
 } /// namespace app
 } /// namespace xos
